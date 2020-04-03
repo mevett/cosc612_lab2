@@ -19,19 +19,7 @@ __global__ void mysgemm(int m, int n, int k, const float *A, const float *B, flo
      *
      ********************************************************************/
 
-    // INSERT KERNEL CODE HERE
-
-    unsigned int row = blockIdx.y*blockDim.y + threadIdx.y;
-    unsigned int col = blockIdx.x*blockDim.x + threadIdx.x;
-
-    if(row < m && col < n) {
-      float sum = 0;
-      for(unsigned int i = 0; i < k; ++i) {
-        sum += A[row*k + i]*B[i*n + col];
-      }
-      C[row*n + col] = sum;
-    }
-
+ 
 }
 
 void basicSgemm(char transa, char transb, int m, int n, int k, float alpha, const float *A, int lda, const float *B, int ldb, float beta, float *C, int ldc)
