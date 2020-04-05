@@ -19,8 +19,8 @@ typedef struct {
 #ifdef __cplusplus
 extern "C" {
 #endif
-void initVector(unsigned int **vec_h, unsigned int size, unsigned int num_bins);
-void verify(float *A, float *B, float *C, int n);
+void verify(float *A, float *B, float *C, unsigned int m, unsigned int k,
+  unsigned int n);
 void startTime(Timer* timer);
 void stopTime(Timer* timer);
 float elapsedTime(Timer timer);
@@ -30,7 +30,7 @@ float elapsedTime(Timer timer);
 
 #define FATAL(msg, ...) \
     do {\
-        fprintf(stderr, "[%s:%d] \n", msg, __FILE__, __LINE__, ##__VA_ARGS__);\
+        fprintf(stderr, "[%s:%d] "msg"\n", __FILE__, __LINE__, ##__VA_ARGS__);\
         exit(-1);\
     } while(0)
 
@@ -51,6 +51,8 @@ float elapsedTime(Timer timer);
 			result);													\
 		exit(1);														\
 	} }
+
+#endif
 
 
 #endif
