@@ -30,7 +30,7 @@ float elapsedTime(Timer timer);
 
 #define FATAL(msg, ...) \
     do {\
-        fprintf(stderr, "[%s:%d] "msg"\n", __FILE__, __LINE__, ##__VA_ARGS__);\
+        fprintf(stderr, "[%s:%d] msg\n", __FILE__, __LINE__, ##__VA_ARGS__);\
         exit(-1);\
     } while(0)
 
@@ -45,7 +45,7 @@ float elapsedTime(Timer timer);
  * See cuda.h for error code descriptions.
  */
 #define CHECK_CUDA_RESULT(N) {											\
-	CUresult result = N;												\
+	cudaError_t result = N;												\
 	if (result != 0) {													\
 		printf("CUDA call on line %d returned error %d\n", __LINE__,	\
 			result);													\
@@ -54,5 +54,3 @@ float elapsedTime(Timer timer);
 
 #endif
 
-
-#endif
